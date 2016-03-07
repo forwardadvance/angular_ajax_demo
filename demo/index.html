@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <script src="lib/angular.js"></script>
+    <script src="js/demo.js"></script>
+  </head>
+  <body ng-app="app" ng-controller="catListController">
+
+    <div ng-if='error'>There was an error: {{error}}</div>
+    <h1>All your cats</h1>
+    <div ng-if="loading">Loading...</div>
+    <div ng-repeat="cat in cats">
+      {{cat.name}} - {{cat.age}}
+    </div>
+  </body>
+</html>
