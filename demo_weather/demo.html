@@ -5,15 +5,16 @@
   <script src="lib/angular.js"></script>
   <script src="js/demo.js"></script>
 </head>
-<body ng-app="app" ng-controller="weatherController">
+<body ng-app="app" ng-controller="WeatherController">
   <div>
     <form>
       <input
         ng-model='loc'
-        ng-change="getFeed()"
-        ng-model-options="{debounce:500}"/>
+        ng-change="getFeed(loc)"
+        ng-model-options="{debounce:500}"
+        />
       {{loc}}
-      <button ng-click="getFeed()">Click</button>
+      <button ng-click="getFeed(loc)">Click</button>
     </form>
     <div ng-show="spinner">Loading!!!</div>
     <div>

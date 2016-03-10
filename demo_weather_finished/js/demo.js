@@ -6,7 +6,6 @@
 // * ng-model-options lets us debounce
 // * spinner
 
-
 angular.module('app', ['weather', 'constants']);
 angular.module('constants', []);
 
