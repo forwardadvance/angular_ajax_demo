@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Scope</title>
+    <script src="lib/angular.js"></script>
+    <script src="js/demo.js"></script>
+  </head>
+  <body ng-app="app" ng-controller="FlickrController">
+    <pre>{{feed | json}}</pre>
+    <!--
+      Use ng-repeat to iterate over the images.
+      Be careful, the HTTP response is not an array. It contains an array.
+      You will need to find the array in the response.
+    -->
+  </body>
+</html>

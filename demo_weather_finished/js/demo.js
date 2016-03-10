@@ -8,7 +8,7 @@
 
 
 angular.module('app', ['weather', 'constants']);
-angular.module('constants', [])
+angular.module('constants', []);
 
 (function() {
   angular.module('weather', [])
