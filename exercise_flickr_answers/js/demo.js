@@ -19,11 +19,9 @@ angular.module('app', []);
     $scope.getFeed = function() {
       $scope.status = "loading...";
       $http.jsonp(tagUrl($scope.tag))
-        .then(function(response) {
-          $scope.feed = response.data
-          delete($scope.status);
-        })
-        .catch(function() {
+        .then((response) => $scope.feed = response.data)
+        .then(() => delete($scope.status))
+        .catch(() => {
           $scope.status = "failed";
         });
     }
@@ -41,4 +39,3 @@ angular.module('app', []);
   }
 
 })();
-

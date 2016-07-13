@@ -32,7 +32,11 @@
   <body ng-app="app" ng-controller="FlickrController">
     <h1 ng-show='feed'>{{feed.title}}</h1>
     <h1 ng-hide='feed'>Search Flickr</h1>
-    <input ng-model="tag" ng-change="getFeed(tag)" ng-model-options="{debounce:500}" placeholder="search by tag" />
+    <input
+      ng-model="tag"
+      ng-change="getFeed(tag)"
+      ng-model-options="{debounce:500}"
+      placeholder="search by tag" />
     <div class="loading" ng-show="status">
       Loading...
     </div>
