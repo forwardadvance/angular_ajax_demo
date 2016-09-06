@@ -13,8 +13,10 @@
 
 // var x = () => 'toast'
 
-(function() {
 
+angular.module('app', ['weather']);
+
+(function() {
   function makeUrl(base, key, loc) {
     return [
       base,
@@ -25,8 +27,6 @@
       "&callback=JSON_CALLBACK"
     ].join('');
   }
-
-  angular.module('app', ['weather']);
 
   angular.module('weather', [])
     .controller('WeatherController', function ($scope, $http, openWeatherConstants) {
