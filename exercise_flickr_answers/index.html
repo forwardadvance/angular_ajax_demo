@@ -29,7 +29,8 @@
     }
     </style>
   </head>
-  <body ng-app="app" ng-controller="FlickrController">
+  <body ng-app="app">
+    <flickr></flickr>
     <h1 ng-show='feed'>{{feed.title}}</h1>
     <h1 ng-hide='feed'>Search Flickr</h1>
     <input
