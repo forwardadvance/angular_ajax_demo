@@ -5,20 +5,20 @@
   <script src="lib/angular.js"></script>
   <script src="js/app.js"></script>
 </head>
-<body ng-app="app" ng-controller="WeatherController">
+<body ng-app="app" ng-controller="WeatherController as vm">
   <div>
     <form>
       <input
-        ng-model='loc'
-        ng-change="getFeed(loc)"
-        ng-model-options="{debounce:500}"
-        />{{loc}}
-      <button ng-click="getFeed(loc)">Click</button>
+        ng-model='vm.loc'
+        ng-change="vm.getFeed(vm.loc)"
+        ng-model-options="{debounce: 500}"
+        />{{vm.loc}}
+      <button ng-click="vm.getFeed(vm.loc)">Click</button>
     </form>
-    <div ng-show="spinner">Loading!!!</div>
+    <div ng-show="vm.spinner">Loading!!!</div>
     <div>
       <pre>
-        {{weather | json}}
+        {{vm.weather | json}}
       </pre>
     </div>
   </div>
@@ -63,7 +63,7 @@ Model Options Debounce - ng-model-options="{debounce: 500}"
 <body ng-app="app" ng-controller="WeatherController">
   <div>
     <form>
-      <input ng-model='loc'/>
+      <input ng-model='loc'/>{{loc}}
       <button ng-click="getFeed()">Click</button>
     </form>
     <div ng-show="spinner">Loading!!!</div>

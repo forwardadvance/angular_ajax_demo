@@ -7,48 +7,35 @@
 // * ng-model-options lets us debounce
 // * spinner
 
-// var x = function() {
-//   return 'toast'
-// }
-
-// var x = () => 'toast'
-
-
 angular.module('app', ['weather']);
 
-(function() {
-  function makeUrl(base, key, loc) {
-    return [
-      base,
-      "weather?q=",
-      loc,
-      "&APPID=",
-      key,
-      "&callback=JSON_CALLBACK"
-    ].join('');
-  }
+angular.module('weather', ['constants'])
+  .controller('WeatherController', function (weather) {
+    this.loc = "london";
+    this.getFeed = function(loc) {
+      this.spinner = true;
+      weather.get(loc)
+      .then((weather) => this.weather = weather)
+      .then(() => this.spinner = false)
+    };
+  })
+  .service('weather', function($http, appId) {
+    this.get = function(loc) {
+      var url = [
+        "http://api.openweathermap.org/data/2.5/weather?q=",
+        loc,
+        "&APPID=",
+        appId,
+        "&callback=JSON_CALLBACK"
+      ].join('');
 
-  angular.module('weather', [])
-    .controller('WeatherController', function ($scope, $http, openWeatherConstants) {
-      $scope.loc = "london";
+      return $http.jsonp(url)
+        .then((res) => res.data);
+    }
+  })
 
-      $scope.getFeed = (loc) => {
-        var url = makeUrl(
-          openWeatherConstants.base,
-          openWeatherConstants.key,
-          loc
-        );
-        $http.jsonp(url)
-          .then((res) => res.data)
-          .then((weather) => $scope.weather = weather)
-      };
-      // $scope.$watch('loc', $scope.getFeed)
-    })
-    .value('openWeatherConstants', {
-      key:"57d36da6b8187a992393dc6a0f4c96c3",
-      base:"http://api.openweathermap.org/data/2.5/"
-    });
-})()
+angular.module('constants', [])
+  .value('appId', '57d36da6b8187a992393dc6a0f4c96c3')
 
 
 
